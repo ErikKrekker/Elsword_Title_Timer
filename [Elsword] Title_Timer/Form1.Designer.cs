@@ -96,20 +96,20 @@
             btn_Chg_Fontsize.Size = new Size(43, 23);
             btn_Chg_Fontsize.TabIndex = 1;
             btn_Chg_Fontsize.TabStop = false;
-            btn_Chg_Fontsize.Text = "변경";
+            btn_Chg_Fontsize.Text = "Change";
             btn_Chg_Fontsize.UseVisualStyleBackColor = true;
             btn_Chg_Fontsize.Click += chang_Fontsize_Click;
             // 
-            // btn_Switching
+            // btn_TitleSwitchMenu
             // 
-            btn_Switching.Location = new Point(12, 12);
-            btn_Switching.Name = "btn_Switching";
-            btn_Switching.Size = new Size(116, 43);
-            btn_Switching.TabIndex = 2;
-            btn_Switching.TabStop = false;
-            btn_Switching.Text = "칭호 스위칭 키\r\n등록버튼";
-            btn_Switching.UseVisualStyleBackColor = true;
-            btn_Switching.Click += HotkeyButton_Click;
+            btn_TitleSwitchMenu.Location = new Point(12, 12);
+            btn_TitleSwitchMenu.Name = "btn_TitleSwitchMenu";
+            btn_TitleSwitchMenu.Size = new Size(116, 43);
+            btn_TitleSwitchMenu.TabIndex = 2;
+            btn_TitleSwitchMenu.TabStop = false;
+            btn_TitleSwitchMenu.Text = "Register Title switch menu";
+            btn_TitleSwitchMenu.UseVisualStyleBackColor = true;
+            btn_TitleSwitchMenu.Click += HotkeyButton_Click;
             // 
             // btn__Switching_reset
             // 
@@ -118,7 +118,7 @@
             btn__Switching_reset.Size = new Size(65, 43);
             btn__Switching_reset.TabIndex = 3;
             btn__Switching_reset.TabStop = false;
-            btn__Switching_reset.Text = "<< 리셋";
+            btn__Switching_reset.Text = "<< Reset";
             btn__Switching_reset.UseVisualStyleBackColor = true;
             btn__Switching_reset.Click += btn__Switching_reset_Click;
             // 
@@ -129,7 +129,7 @@
             btn_NPWG.Size = new Size(116, 43);
             btn_NPWG.TabIndex = 4;
             btn_NPWG.TabStop = false;
-            btn_NPWG.Text = "백귀 방향키\r\n등록버튼";
+            btn_NPWG.Text = "Reset Title directional key";
             btn_NPWG.UseVisualStyleBackColor = true;
             btn_NPWG.Click += HotkeyButton_Click;
             // 
@@ -140,7 +140,7 @@
             btn_NPWG_Skill.Size = new Size(116, 43);
             btn_NPWG_Skill.TabIndex = 5;
             btn_NPWG_Skill.TabStop = false;
-            btn_NPWG_Skill.Text = "백귀 스킬키\r\n등록버튼";
+            btn_NPWG_Skill.Text = "Skill for Reset Title";
             btn_NPWG_Skill.UseVisualStyleBackColor = true;
             btn_NPWG_Skill.Click += HotkeyButton_Click;
             // 
@@ -151,7 +151,7 @@
             btn_FreedShadow.Size = new Size(116, 43);
             btn_FreedShadow.TabIndex = 6;
             btn_FreedShadow.TabStop = false;
-            btn_FreedShadow.Text = "풀그 방향키\r\n등록버튼";
+            btn_FreedShadow.Text = "Awakening Title directional key";
             btn_FreedShadow.UseVisualStyleBackColor = true;
             btn_FreedShadow.Click += HotkeyButton_Click;
             // 
@@ -162,7 +162,7 @@
             btn_Dusk.Size = new Size(116, 43);
             btn_Dusk.TabIndex = 7;
             btn_Dusk.TabStop = false;
-            btn_Dusk.Text = "황혼 방향키\r\n등록버튼";
+            btn_Dusk.Text = "Grotto Title directional key";
             btn_Dusk.UseVisualStyleBackColor = true;
             btn_Dusk.Click += HotkeyButton_Click;
             // 
@@ -173,7 +173,7 @@
             btn_Natural.Size = new Size(116, 43);
             btn_Natural.TabIndex = 8;
             btn_Natural.TabStop = false;
-            btn_Natural.Text = "순리 방향키\r\n등록버튼";
+            btn_Natural.Text = "DPS Title directional key";
             btn_Natural.UseVisualStyleBackColor = true;
             btn_Natural.Click += HotkeyButton_Click;
             // 
@@ -184,7 +184,7 @@
             btn_Awakening.Size = new Size(116, 43);
             btn_Awakening.TabIndex = 9;
             btn_Awakening.TabStop = false;
-            btn_Awakening.Text = "각성키\r\n등록버튼";
+            btn_Awakening.Text = "Register Awakening key";
             btn_Awakening.UseVisualStyleBackColor = true;
             btn_Awakening.Click += HotkeyButton_Click;
             // 
@@ -195,7 +195,7 @@
             btn_Onion.Size = new Size(116, 43);
             btn_Onion.TabIndex = 10;
             btn_Onion.TabStop = false;
-            btn_Onion.Text = "양파 사용키\r\n등록버튼";
+            btn_Onion.Text = "Register Onion key";
             btn_Onion.UseVisualStyleBackColor = true;
             btn_Onion.Click += HotkeyButton_Click;
             // 
@@ -206,7 +206,7 @@
             btn_Apple.Size = new Size(116, 43);
             btn_Apple.TabIndex = 11;
             btn_Apple.TabStop = false;
-            btn_Apple.Text = "사과 사용키\r\n등록버튼";
+            btn_Apple.Text = "Register Apple key";
             btn_Apple.UseVisualStyleBackColor = true;
             btn_Apple.Click += HotkeyButton_Click;
             // 
@@ -217,7 +217,7 @@
             btn_TimerReset.Size = new Size(116, 43);
             btn_TimerReset.TabIndex = 12;
             btn_TimerReset.TabStop = false;
-            btn_TimerReset.Text = "타이머 초기화 키\r\n등록버튼";
+            btn_TimerReset.Text = "Register key to reset all timers";
             btn_TimerReset.UseVisualStyleBackColor = true;
             btn_TimerReset.Click += HotkeyButton_Click;
             // 
@@ -228,7 +228,7 @@
             btn_NPWG_reset.Size = new Size(65, 43);
             btn_NPWG_reset.TabIndex = 14;
             btn_NPWG_reset.TabStop = false;
-            btn_NPWG_reset.Text = "<< 리셋";
+            btn_NPWG_reset.Text = "<< Reset";
             btn_NPWG_reset.UseVisualStyleBackColor = true;
             btn_NPWG_reset.Click += btn_NPWG_reset_Click;
             // 
@@ -239,7 +239,7 @@
             btn_NPWG_Skill_reset.Size = new Size(65, 43);
             btn_NPWG_Skill_reset.TabIndex = 15;
             btn_NPWG_Skill_reset.TabStop = false;
-            btn_NPWG_Skill_reset.Text = "<< 리셋";
+            btn_NPWG_Skill_reset.Text = "<< Reset";
             btn_NPWG_Skill_reset.UseVisualStyleBackColor = true;
             btn_NPWG_Skill_reset.Click += btn_NPWG_Skill_reset_Click;
             // 
@@ -250,7 +250,7 @@
             btn_FreedShadow_reset.Size = new Size(65, 43);
             btn_FreedShadow_reset.TabIndex = 16;
             btn_FreedShadow_reset.TabStop = false;
-            btn_FreedShadow_reset.Text = "<< 리셋";
+            btn_FreedShadow_reset.Text = "<< Reset";
             btn_FreedShadow_reset.UseVisualStyleBackColor = true;
             btn_FreedShadow_reset.Click += btn_FreedShadow_reset_Click;
             // 
@@ -261,7 +261,7 @@
             btn_Dusk_reset.Size = new Size(65, 43);
             btn_Dusk_reset.TabIndex = 17;
             btn_Dusk_reset.TabStop = false;
-            btn_Dusk_reset.Text = "<< 리셋";
+            btn_Dusk_reset.Text = "<< Reset";
             btn_Dusk_reset.UseVisualStyleBackColor = true;
             btn_Dusk_reset.Click += btn_Dusk_reset_Click;
             // 
@@ -272,7 +272,7 @@
             btn_Natural_reset.Size = new Size(65, 43);
             btn_Natural_reset.TabIndex = 18;
             btn_Natural_reset.TabStop = false;
-            btn_Natural_reset.Text = "<< 리셋";
+            btn_Natural_reset.Text = "<< Reset";
             btn_Natural_reset.UseVisualStyleBackColor = true;
             btn_Natural_reset.Click += btn_Natural_reset_Click;
             // 
@@ -283,7 +283,7 @@
             btn_Awakening_reset.Size = new Size(65, 43);
             btn_Awakening_reset.TabIndex = 19;
             btn_Awakening_reset.TabStop = false;
-            btn_Awakening_reset.Text = "<< 리셋";
+            btn_Awakening_reset.Text = "<< Reset";
             btn_Awakening_reset.UseVisualStyleBackColor = true;
             btn_Awakening_reset.Click += btn_Awakening_reset_Click;
             // 
@@ -294,7 +294,7 @@
             btn_Onion_reset.Size = new Size(65, 43);
             btn_Onion_reset.TabIndex = 20;
             btn_Onion_reset.TabStop = false;
-            btn_Onion_reset.Text = "<< 리셋";
+            btn_Onion_reset.Text = "<< Reset";
             btn_Onion_reset.UseVisualStyleBackColor = true;
             btn_Onion_reset.Click += btn_Onion_reset_Click;
             // 
@@ -305,7 +305,7 @@
             btn_Apple_reset.Size = new Size(65, 43);
             btn_Apple_reset.TabIndex = 21;
             btn_Apple_reset.TabStop = false;
-            btn_Apple_reset.Text = "<< 리셋";
+            btn_Apple_reset.Text = "<< Reset";
             btn_Apple_reset.UseVisualStyleBackColor = true;
             btn_Apple_reset.Click += btn_Apple_reset_Click;
             // 
@@ -316,7 +316,7 @@
             btn_TimerReset_reset.Size = new Size(65, 43);
             btn_TimerReset_reset.TabIndex = 22;
             btn_TimerReset_reset.TabStop = false;
-            btn_TimerReset_reset.Text = "<< 리셋";
+            btn_TimerReset_reset.Text = "<< Reset";
             btn_TimerReset_reset.UseVisualStyleBackColor = true;
             btn_TimerReset_reset.Click += btn_TimerReset_reset_Click;
             // 
@@ -330,7 +330,7 @@
             check_NPWG.Size = new Size(142, 19);
             check_NPWG.TabIndex = 23;
             check_NPWG.TabStop = false;
-            check_NPWG.Text = "백귀 타이머 사용여부";
+            check_NPWG.Text = "Use Skill Reset timer";
             check_NPWG.UseVisualStyleBackColor = true;
             check_NPWG.CheckedChanged += check_NPWG_CheckedChanged;
             // 
@@ -344,7 +344,7 @@
             check_FreedShadow.Size = new Size(142, 19);
             check_FreedShadow.TabIndex = 24;
             check_FreedShadow.TabStop = false;
-            check_FreedShadow.Text = "풀그 타이머 사용여부";
+            check_FreedShadow.Text = "Use Awakening Title timer";
             check_FreedShadow.UseVisualStyleBackColor = true;
             check_FreedShadow.CheckedChanged += check_FreedShadow_CheckedChanged;
             // 
@@ -358,7 +358,7 @@
             check_Dusk.Size = new Size(142, 19);
             check_Dusk.TabIndex = 25;
             check_Dusk.TabStop = false;
-            check_Dusk.Text = "황혼 타이머 사용여부";
+            check_Dusk.Text = "Use Grotto timer";
             check_Dusk.UseVisualStyleBackColor = true;
             check_Dusk.CheckedChanged += check_Dusk_CheckedChanged;
             // 
@@ -370,7 +370,7 @@
             check_NPWG_FOD.Size = new Size(180, 19);
             check_NPWG_FOD.TabIndex = 26;
             check_NPWG_FOD.TabStop = false;
-            check_NPWG_FOD.Text = "백귀 \"유사 포오데\" 사용여부";
+            check_NPWG_FOD.Text = "Use Skill Rest \"Pseudo FOD\"";
             check_NPWG_FOD.UseVisualStyleBackColor = true;
             check_NPWG_FOD.CheckedChanged += check_NPWG_FOD_CheckedChanged;
             // 
@@ -382,7 +382,7 @@
             check_FreedShadow_FOD.Size = new Size(180, 19);
             check_FreedShadow_FOD.TabIndex = 27;
             check_FreedShadow_FOD.TabStop = false;
-            check_FreedShadow_FOD.Text = "풀그 \"유사 포오데\" 사용여부";
+            check_FreedShadow_FOD.Text = "Use Awakeing Title \"Pseudo FOD\"";
             check_FreedShadow_FOD.UseVisualStyleBackColor = true;
             check_FreedShadow_FOD.CheckedChanged += check_FreedShadow_FOD_CheckedChanged;
             // 
@@ -394,7 +394,7 @@
             check_Dusk_FOD.Size = new Size(180, 19);
             check_Dusk_FOD.TabIndex = 28;
             check_Dusk_FOD.TabStop = false;
-            check_Dusk_FOD.Text = "황혼 \"유사 포오데\" 사용여부";
+            check_Dusk_FOD.Text = "Use Grotto Title \"Pseudo FOD\"";
             check_Dusk_FOD.UseVisualStyleBackColor = true;
             check_Dusk_FOD.CheckedChanged += check_Dusk_FOD_CheckedChanged;
             // 
@@ -414,7 +414,7 @@
             label_Switching.Name = "label_Switching";
             label_Switching.Size = new Size(87, 30);
             label_Switching.TabIndex = 30;
-            label_Switching.Text = "현재 등록된 키\r\n[없음]";
+            label_Switching.Text = "Current registered key\r\n[None]";
             label_Switching.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_NPWG
@@ -424,7 +424,7 @@
             label_NPWG.Name = "label_NPWG";
             label_NPWG.Size = new Size(87, 30);
             label_NPWG.TabIndex = 31;
-            label_NPWG.Text = "현재 등록된 키\r\n[없음]";
+            label_NPWG.Text = "Current key\r\n[None]";
             label_NPWG.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_NPWG_Skill
@@ -434,7 +434,7 @@
             label_NPWG_Skill.Name = "label_NPWG_Skill";
             label_NPWG_Skill.Size = new Size(87, 30);
             label_NPWG_Skill.TabIndex = 32;
-            label_NPWG_Skill.Text = "현재 등록된 키\r\n[없음]";
+            label_NPWG_Skill.Text = "Current key\r\n[None]";
             label_NPWG_Skill.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_FreedShadow
@@ -444,7 +444,7 @@
             label_FreedShadow.Name = "label_FreedShadow";
             label_FreedShadow.Size = new Size(87, 30);
             label_FreedShadow.TabIndex = 33;
-            label_FreedShadow.Text = "현재 등록된 키\r\n[없음]";
+            label_FreedShadow.Text = "Current key\r\n[None]";
             label_FreedShadow.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_Dusk
@@ -454,7 +454,7 @@
             label_Dusk.Name = "label_Dusk";
             label_Dusk.Size = new Size(87, 30);
             label_Dusk.TabIndex = 34;
-            label_Dusk.Text = "현재 등록된 키\r\n[없음]";
+            label_Dusk.Text = "Current key\r\n[None]";
             label_Dusk.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_Natural
@@ -464,7 +464,7 @@
             label_Natural.Name = "label_Natural";
             label_Natural.Size = new Size(87, 30);
             label_Natural.TabIndex = 35;
-            label_Natural.Text = "현재 등록된 키\r\n[없음]";
+            label_Natural.Text = "Current key\r\n[None]";
             label_Natural.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_Awakening
@@ -474,7 +474,7 @@
             label_Awakening.Name = "label_Awakening";
             label_Awakening.Size = new Size(87, 30);
             label_Awakening.TabIndex = 36;
-            label_Awakening.Text = "현재 등록된 키\r\n[없음]";
+            label_Awakening.Text = "Current key\r\n[None]";
             label_Awakening.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_Onion
@@ -484,7 +484,7 @@
             label_Onion.Name = "label_Onion";
             label_Onion.Size = new Size(87, 30);
             label_Onion.TabIndex = 37;
-            label_Onion.Text = "현재 등록된 키\r\n[없음]";
+            label_Onion.Text = "Current key\r\n[None]";
             label_Onion.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_Apple
@@ -494,7 +494,7 @@
             label_Apple.Name = "label_Apple";
             label_Apple.Size = new Size(87, 30);
             label_Apple.TabIndex = 38;
-            label_Apple.Text = "현재 등록된 키\r\n[없음]";
+            label_Apple.Text = "Current key\r\n[None]";
             label_Apple.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_TimerReset
@@ -504,7 +504,7 @@
             label_TimerReset.Name = "label_TimerReset";
             label_TimerReset.Size = new Size(87, 30);
             label_TimerReset.TabIndex = 39;
-            label_TimerReset.Text = "현재 등록된 키\r\n[없음]";
+            label_TimerReset.Text = "Current key\r\n[None]";
             label_TimerReset.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // text_Preset
@@ -522,7 +522,7 @@
             label12.Name = "label12";
             label12.Size = new Size(99, 15);
             label12.TabIndex = 41;
-            label12.Text = "프리셋 이름 입력";
+            label12.Text = "Enter preset name";
             label12.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btn_savePreset
@@ -532,7 +532,7 @@
             btn_savePreset.Size = new Size(107, 23);
             btn_savePreset.TabIndex = 42;
             btn_savePreset.TabStop = false;
-            btn_savePreset.Text = "프리셋 저장";
+            btn_savePreset.Text = "Save Preset";
             btn_savePreset.UseVisualStyleBackColor = true;
             btn_savePreset.Click += btn_savePreset_Click;
             // 
@@ -553,7 +553,7 @@
             btn_loadPreset.Size = new Size(107, 23);
             btn_loadPreset.TabIndex = 44;
             btn_loadPreset.TabStop = false;
-            btn_loadPreset.Text = "프리셋 불러오기";
+            btn_loadPreset.Text = "Load preset";
             btn_loadPreset.UseVisualStyleBackColor = true;
             btn_loadPreset.Click += btn_loadPreset_Click;
             // 
@@ -564,7 +564,7 @@
             btn_FOD.Size = new Size(116, 43);
             btn_FOD.TabIndex = 45;
             btn_FOD.TabStop = false;
-            btn_FOD.Text = "유사 포오데 키\r\n등록버튼";
+            btn_FOD.Text = "Register Pseudo FOD key";
             btn_FOD.UseVisualStyleBackColor = true;
             btn_FOD.Click += btn_FOD_Click;
             // 
@@ -575,7 +575,7 @@
             label_FOD.Name = "label_FOD";
             label_FOD.Size = new Size(87, 30);
             label_FOD.TabIndex = 46;
-            label_FOD.Text = "현재 등록된 키\r\n[없음]";
+            label_FOD.Text = "Current key\r\n[None]";
             label_FOD.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btn_FOD_reset
@@ -585,7 +585,7 @@
             btn_FOD_reset.Size = new Size(65, 43);
             btn_FOD_reset.TabIndex = 47;
             btn_FOD_reset.TabStop = false;
-            btn_FOD_reset.Text = "<< 리셋";
+            btn_FOD_reset.Text = "<< Reset";
             btn_FOD_reset.UseVisualStyleBackColor = true;
             btn_FOD_reset.Click += btn_FOD_reset_Click;
             // 
@@ -605,7 +605,7 @@
             label3.Name = "label3";
             label3.Size = new Size(127, 15);
             label3.TabIndex = 49;
-            label3.Text = "칭호창 글씨 크기 변경";
+            label3.Text = "Change text size";
             // 
             // label4
             // 
@@ -614,7 +614,7 @@
             label4.Name = "label4";
             label4.Size = new Size(139, 15);
             label4.TabIndex = 50;
-            label4.Text = "칭호창 아이콘 크기 변경";
+            label4.Text = "Change icon size";
             // 
             // label5
             // 
@@ -632,7 +632,7 @@
             btn_Chg_Imgsize.Size = new Size(43, 23);
             btn_Chg_Imgsize.TabIndex = 52;
             btn_Chg_Imgsize.TabStop = false;
-            btn_Chg_Imgsize.Text = "변경";
+            btn_Chg_Imgsize.Text = "Change";
             btn_Chg_Imgsize.UseVisualStyleBackColor = true;
             btn_Chg_Imgsize.Click += btn_Chg_Imgsize_Click;
             // 
@@ -653,7 +653,7 @@
             check_ADD_User.Size = new Size(173, 19);
             check_ADD_User.TabIndex = 54;
             check_ADD_User.TabStop = false;
-            check_ADD_User.Text = "애드 유저 체크(각성키 2번)";
+            check_ADD_User.Text = "Add user check (Awakening key x2)";
             check_ADD_User.UseVisualStyleBackColor = true;
             check_ADD_User.CheckedChanged += check_ADD_User_CheckedChanged;
             // 
@@ -665,7 +665,7 @@
             check_Resize.Size = new Size(186, 34);
             check_Resize.TabIndex = 55;
             check_Resize.TabStop = false;
-            check_Resize.Text = "칭호창 크기 다 바꾸면 누르셈\r\n(개거슬리는 버튼 제거)";
+            check_Resize.Text = "Check after changing all title window sizes\n(Removes annoying button)";
             check_Resize.TextAlign = ContentAlignment.MiddleCenter;
             check_Resize.UseVisualStyleBackColor = true;
             check_Resize.CheckedChanged += check_Resize_CheckedChanged;
@@ -726,7 +726,7 @@
             Controls.Add(btn_NPWG_Skill);
             Controls.Add(btn_NPWG);
             Controls.Add(btn__Switching_reset);
-            Controls.Add(btn_Switching);
+            Controls.Add(btn_TitleSwitchMenu);
             Controls.Add(btn_Chg_Fontsize);
             Controls.Add(text_Fontsize);
             Name = "Form1";
@@ -740,7 +740,7 @@
 
         private TextBox text_Fontsize;
         private Button btn_Chg_Fontsize;
-        private Button btn_Switching;
+        private Button btn_TitleSwitchMenu;
         private Button btn__Switching_reset;
         private Button btn_NPWG;
         private Button btn_NPWG_Skill;

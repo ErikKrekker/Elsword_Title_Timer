@@ -46,7 +46,7 @@ namespace _Elsword__Title_Timer {
         public static bool IsCapturing_FOD = false;
         public static bool IsCapturing_TimerReset = false;
 
-        const string REGISTERED_KEY_TEXT = "Currently registered key\r\n";
+        const string REGISTERED_KEY_TEXT = "Current key\r\n";
         private List<HotkeyBinding> hotkeyBindings;
 
 
@@ -546,7 +546,7 @@ namespace _Elsword__Title_Timer {
                     Label = label_Switching,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_ChangeTitle = v,
-                    ButtonDefaultText = "Title switching key\r\nregister button",
+                    ButtonDefaultText = "Register Title switch",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // 15-5 Title Key
@@ -556,7 +556,7 @@ namespace _Elsword__Title_Timer {
                     Label = label_NPWG,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_NPWG = v,
-                    ButtonDefaultText = "NPWG direction key\r\nregister button",
+                    ButtonDefaultText = "Register Reset Title",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Skill to Reset key
@@ -566,7 +566,7 @@ namespace _Elsword__Title_Timer {
                     Label = label_NPWG_Skill,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_NPWG_Skill = v,
-                    ButtonDefaultText = "NPWG skill key\r\nregister button",
+                    ButtonDefaultText = "Register Skill for Reset Title",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // 17-5 or 20-5 Title key
@@ -576,7 +576,7 @@ namespace _Elsword__Title_Timer {
                     Label = label_FreedShadow,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_FreedShadow = v,
-                    ButtonDefaultText = "Freed Shadow direction key\r\nregister button",
+                    ButtonDefaultText = "Register Awakening Title",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Grotto Title key
@@ -586,7 +586,7 @@ namespace _Elsword__Title_Timer {
                     Label = label_Dusk,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_Dusk = v,
-                    ButtonDefaultText = "Dusk direction key\r\nregister button",
+                    ButtonDefaultText = "Register Grotto Title",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // DPS Title Key
@@ -596,7 +596,7 @@ namespace _Elsword__Title_Timer {
                     Label = label_Natural,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_Natural = v,
-                    ButtonDefaultText = "Natural Flow direction key\r\nregister button",
+                    ButtonDefaultText = "Register DPS Title",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Awakening Key
@@ -606,7 +606,7 @@ namespace _Elsword__Title_Timer {
                     Label = label_Awakening,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_Awakening = v,
-                    ButtonDefaultText = "Awakening key\r\nregister button",
+                    ButtonDefaultText = "Register Awakening",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Onion Key
@@ -616,7 +616,7 @@ namespace _Elsword__Title_Timer {
                     Label = label_Onion,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_Onion = v,
-                    ButtonDefaultText = "Onion use key\r\nregister button",
+                    ButtonDefaultText = "Register Onion",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Apple Consumption Key
@@ -626,7 +626,7 @@ namespace _Elsword__Title_Timer {
                     Label = label_Apple,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_Apple = v,
-                    ButtonDefaultText = "Apple use key\r\nregister button",
+                    ButtonDefaultText = "Register Apple",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Pseudo FOD Key
@@ -636,7 +636,7 @@ namespace _Elsword__Title_Timer {
                     Label = label_FOD,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_FOD = v,
-                    ButtonDefaultText = "Pseudo FOD key\r\nregister button",
+                    ButtonDefaultText = "Register Pseudo FOD",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Timer Reset Key
@@ -646,7 +646,7 @@ namespace _Elsword__Title_Timer {
                     Label = label_TimerReset,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_TimerReset = v,
-                    ButtonDefaultText = "Timer reset key\r\nregister button",
+                    ButtonDefaultText = "Register Clear Timer",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
             };
