@@ -78,13 +78,16 @@ namespace _Elsword__Title_Timer {
 
         private void StartPreset()
         {
-            using (StreamWriter writer = new StreamWriter("recent_used.txt"))
+            if (File.Exists("recent_used.txt"))
             {
-                if (File.Exists("recent_used.txt"))
+                using (StreamReader reader = new StreamReader("recent_used.txt"))
                 {
-                    presetFileName = (string)reader.ReadLine();
+                    presetFileName = reader.ReadLine();
                 }
-                else
+            }
+            else
+            {
+                using (StreamWriter writer = new StreamWriter("recent_used.txt"))
                 {
                     writer.WriteLine("");
                 }
@@ -640,7 +643,7 @@ namespace _Elsword__Title_Timer {
                 new HotkeyBinding
                 {
                     Button = btn_TimerReset,
-                    LoadPreset = label_TimerReset,
+                    Label = label_TimerReset,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_TimerReset = v,
                     ButtonDefaultText = "Timer reset key\r\nregister button",
