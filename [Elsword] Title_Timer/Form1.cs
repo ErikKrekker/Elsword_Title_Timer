@@ -240,166 +240,19 @@ namespace _Elsword__Title_Timer {
         {
             var binding = hotkeyBindings.FirstOrDefault(b => b.Button == sender);
             if (binding != null)
+                StartKeyCapture(binding);
+        }
+
+        private void HotkeyResetButton_Click(object sender, EventArgs e)
+        {
+            var binding = hotkeyBindings.FirstOrDefault(b => b.ResetButton == sender);
+            if (binding != null)
             {
-                binding.IsCapturing = true;
-                binding.Button.Text = "Please enter a key";
-                DisableOtherControls();
-                this.KeyPreview = true;
-                this.KeyDown += Form1_KeyDown;
+                binding.IsCapturing = false;
+                binding.SetKeycode(-1);
+                binding.Button.Text = binding.ButtonDefaultText;
+                binding.Label.Text = "Current key\r\n[None]";
             }
-        }
-
-        /// <summary>
-        /// Helper to set button text, label, and assign the key value for a hotkey.
-        /// </summary>
-        private void SetHotkeyAndLabel(Button button, Label label, string buttonText, Action<int> setValue, int keycode)
-        {
-            button.Text = buttonText + " key\r\nregister button";
-            setValue(keycode);
-            label.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-        }
-
-        private void btn_Switching_Click(object sender, EventArgs e)
-        {
-            StartKeyCapture(ref IsCapturing_Switching, btn_Switching);
-        }
-
-        private void btn_NPWG_Click(object sender, EventArgs e)
-        {
-            StartKeyCapture(ref IsCapturing_NPWG, btn_NPWG);
-        }
-
-        private void btn_NPWG_Skill_Click(object sender, EventArgs e)
-        {
-            StartKeyCapture(ref IsCapturing_NPWG_Skill, btn_NPWG_Skill);
-        }
-
-        private void btn_FreedShadow_Click(object sender, EventArgs e)
-        {
-            StartKeyCapture(ref IsCapturing_FreedShadow, btn_FreedShadow);
-        }
-
-        private void btn_Dusk_Click(object sender, EventArgs e)
-        {
-            StartKeyCapture(ref IsCapturing_Dusk, btn_Dusk);
-        }
-
-        private void btn_Natural_Click(object sender, EventArgs e)
-        {
-            StartKeyCapture(ref IsCapturing_Natural, btn_Natural);
-        }
-
-        private void btn_Awakening_Click(object sender, EventArgs e)
-        {
-            StartKeyCapture(ref IsCapturing_Awakening, btn_Awakening);
-        }
-
-        private void btn_Onion_Click(object sender, EventArgs e)
-        {
-            StartKeyCapture(ref IsCapturing_Onion, btn_Onion);
-        }
-
-        private void btn_Apple_Click(object sender, EventArgs e)
-        {
-            StartKeyCapture(ref IsCapturing_Apple, btn_Apple);
-        }
-
-        private void btn_FOD_Click(object sender, EventArgs e)
-        {
-            StartKeyCapture(ref IsCapturing_FOD, btn_FOD);
-        }
-
-        private void btn_TimerReset_Click(object sender, EventArgs e)
-        {
-            StartKeyCapture(ref IsCapturing_TimerReset, btn_TimerReset);
-        }
-
-        private void btn__Switching_reset_Click(object sender, EventArgs e)
-        {
-            IsCapturing_Switching = false;
-            timerOverlay.form_custom_ChangeTitle = -1;
-            btn_Switching.Text = "Title switching key\r\nregister button";
-            label_Switching.Text = "Currently registered key\r\n[None]";
-        }
-
-        private void btn_NPWG_reset_Click(object sender, EventArgs e)
-        {
-            IsCapturing_NPWG = false;
-            timerOverlay.form_custom_NPWG = -1;
-            btn_NPWG.Text = "NPWG direction key\r\nregister button";
-            label_NPWG.Text = "Currently registered key\r\n[None]";
-        }
-
-        private void btn_NPWG_Skill_reset_Click(object sender, EventArgs e)
-        {
-            IsCapturing_NPWG_Skill = false;
-            timerOverlay.form_custom_NPWG_Skill = -1;
-            btn_NPWG_Skill.Text = "NPWG skill key\r\nregister button";
-            label_NPWG_Skill.Text = "Currently registered key\r\n[None]";
-        }
-
-        private void btn_FreedShadow_reset_Click(object sender, EventArgs e)
-        {
-            IsCapturing_FreedShadow = false;
-            timerOverlay.form_custom_FreedShadow = -1;
-            btn_FreedShadow.Text = "Freed Shadow direction key\r\nregister button";
-            label_FreedShadow.Text = "Currently registered key\r\n[None]";
-        }
-
-        private void btn_Dusk_reset_Click(object sender, EventArgs e)
-        {
-            IsCapturing_Dusk = false;
-            timerOverlay.form_custom_Dusk = -1;
-            btn_Dusk.Text = "Dusk direction key\r\nregister button";
-            label_Dusk.Text = "Currently registered key\r\n[None]";
-        }
-
-        private void btn_Natural_reset_Click(object sender, EventArgs e)
-        {
-            IsCapturing_Natural = false;
-            timerOverlay.form_custom_Natural = -1;
-            btn_Natural.Text = "Natural Flow direction key\r\nregister button";
-            label_Natural.Text = "Currently registered key\r\n[None]";
-        }
-
-        private void btn_Awakening_reset_Click(object sender, EventArgs e)
-        {
-            IsCapturing_Awakening = false;
-            timerOverlay.form_custom_Awakening = -1;
-            btn_Awakening.Text = "Awakening key\r\nregister button";
-            label_Awakening.Text = "Currently registered key\r\n[None]";
-        }
-
-        private void btn_Onion_reset_Click(object sender, EventArgs e)
-        {
-            IsCapturing_Onion = false;
-            timerOverlay.form_custom_Onion = -1;
-            btn_Onion.Text = "Onion use key\r\nregister button";
-            label_Onion.Text = "Currently registered key\r\n[None]";
-        }
-
-        private void btn_Apple_reset_Click(object sender, EventArgs e)
-        {
-            IsCapturing_Apple = false;
-            timerOverlay.form_custom_Apple = -1;
-            btn_Apple.Text = "Apple use key\r\nregister button";
-            label_Apple.Text = "Currently registered key\r\n[None]";
-        }
-
-        private void btn_FOD_reset_Click(object sender, EventArgs e)
-        {
-            IsCapturing_FOD = false;
-            timerOverlay.form_custom_FOD = -1;
-            btn_FOD.Text = "Pseudo FOD key\r\nregister button";
-            label_FOD.Text = "Currently registered key\r\n[None]";
-        }
-
-        private void btn_TimerReset_reset_Click(object sender, EventArgs e)
-        {
-            IsCapturing_TimerReset = false;
-            timerOverlay.form_custom_TimerReset = -1;
-            btn_TimerReset.Text = "Timer reset key\r\nregister button";
-            label_TimerReset.Text = "Currently registered key\r\n[None]";
         }
 
         private void comboBox_Preset_SelectedIndexChanged(object sender, EventArgs e)
@@ -514,16 +367,15 @@ namespace _Elsword__Title_Timer {
             }
             return defaultCode;
         }
-
+        
         // Generalized handler for key capture buttons
-        private void StartKeyCapture(ref bool captureFlag, Button button)
+        private void StartKeyCapture(HotkeyBinding binding)
         {
-            captureFlag = true;
-            button.Text = "Please enter a key";
+            binding.IsCapturing = true;
+            binding.Button.Text = "Please enter a key";
             DisableOtherControls();
-            // Enable the form's KeyDown event to wait for key input
-            this.KeyPreview = true; // Set the form to receive key events
-            this.KeyDown += Form1_KeyDown; // Register the KeyDown event handler
+            this.KeyPreview = true;
+            this.KeyDown += Form1_KeyDown;
         }
 
         // Generalized KeyPress handler: only allow numbers and backspace
@@ -542,111 +394,122 @@ namespace _Elsword__Title_Timer {
                 // Open Title change menu Key
                 new HotkeyBinding
                 {
-                    Button = btn_Switching,
+                    Button = btn_TitleSwitchMenu,
+                    ResetButton = btn__Switching_reset,
                     Label = label_Switching,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_ChangeTitle = v,
-                    ButtonDefaultText = "Register Title switch",
+                    ButtonDefaultText = "Register Title switch menu key",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // 15-5 Title Key
                 new HotkeyBinding
                 {
                     Button = btn_NPWG,
+                    ResetButton = btn_NPWG_reset,
                     Label = label_NPWG,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_NPWG = v,
-                    ButtonDefaultText = "Register Reset Title",
+                    ButtonDefaultText = "Reset Title directional key",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Skill to Reset key
                 new HotkeyBinding
                 {
                     Button = btn_NPWG_Skill,
+                    ResetButton = btn_NPWG_Skill_reset,
                     Label = label_NPWG_Skill,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_NPWG_Skill = v,
-                    ButtonDefaultText = "Register Skill for Reset Title",
+                    ButtonDefaultText = "Skill for Reset Title",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // 17-5 or 20-5 Title key
                 new HotkeyBinding
                 {
                     Button = btn_FreedShadow,
+                    ResetButton = btn_FreedShadow_reset,
                     Label = label_FreedShadow,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_FreedShadow = v,
-                    ButtonDefaultText = "Register Awakening Title",
+                    ButtonDefaultText = "Awakening Title directional key",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Grotto Title key
                 new HotkeyBinding
                 {
                     Button = btn_Dusk,
+                    ResetButton = btn_Dusk_reset,
                     Label = label_Dusk,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_Dusk = v,
-                    ButtonDefaultText = "Register Grotto Title",
+                    ButtonDefaultText = "Grotto Title directional key",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // DPS Title Key
                 new HotkeyBinding
                 {
                     Button = btn_Natural,
+                    ResetButton = btn_Natural_reset,
                     Label = label_Natural,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_Natural = v,
-                    ButtonDefaultText = "Register DPS Title",
+                    ButtonDefaultText = "DPS Title directional key",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Awakening Key
                 new HotkeyBinding
                 {
                     Button = btn_Awakening,
+                    ResetButton = btn_Awakening_reset,
                     Label = label_Awakening,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_Awakening = v,
-                    ButtonDefaultText = "Register Awakening",
+                    ButtonDefaultText = "Register Awakening key",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Onion Key
                 new HotkeyBinding
                 {
                     Button = btn_Onion,
+                    ResetButton = btn_Onion_reset,
                     Label = label_Onion,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_Onion = v,
-                    ButtonDefaultText = "Register Onion",
+                    ButtonDefaultText = "Register Onion key",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Apple Consumption Key
                 new HotkeyBinding
                 {
                     Button = btn_Apple,
+                    ResetButton = btn_Apple_reset,
                     Label = label_Apple,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_Apple = v,
-                    ButtonDefaultText = "Register Apple",
+                    ButtonDefaultText = "Register Apple key",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Pseudo FOD Key
                 new HotkeyBinding
                 {
                     Button = btn_FOD,
+                    ResetButton = btn_FOD_reset,
                     Label = label_FOD,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_FOD = v,
-                    ButtonDefaultText = "Register Pseudo FOD",
+                    ButtonDefaultText = "Register Pseudo FOD key",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
                 // Timer Reset Key
                 new HotkeyBinding
                 {
                     Button = btn_TimerReset,
+                    ResetButton = btn_TimerReset_reset,
                     Label = label_TimerReset,
                     IsCapturing = false,
                     SetKeycode = v => timerOverlay.form_custom_TimerReset = v,
-                    ButtonDefaultText = "Register Clear Timer",
+                    ButtonDefaultText = "Register key to Clear Timers",
                     LabelPrefix = REGISTERED_KEY_TEXT
                 },
             };

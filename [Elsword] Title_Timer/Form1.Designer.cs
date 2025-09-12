@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             text_Fontsize = new TextBox();
             btn_Chg_Fontsize = new Button();
-            btn_Switching = new Button();
+            btn_TitleSwitchMenu = new Button();
             btn__Switching_reset = new Button();
             btn_NPWG = new Button();
             btn_NPWG_Skill = new Button();
@@ -93,7 +93,7 @@
             // 
             btn_Chg_Fontsize.Location = new Point(363, 631);
             btn_Chg_Fontsize.Name = "btn_Chg_Fontsize";
-            btn_Chg_Fontsize.Size = new Size(43, 23);
+            btn_Chg_Fontsize.Size = new Size(55, 23);
             btn_Chg_Fontsize.TabIndex = 1;
             btn_Chg_Fontsize.TabStop = false;
             btn_Chg_Fontsize.Text = "Change";
@@ -107,7 +107,7 @@
             btn_TitleSwitchMenu.Size = new Size(116, 43);
             btn_TitleSwitchMenu.TabIndex = 2;
             btn_TitleSwitchMenu.TabStop = false;
-            btn_TitleSwitchMenu.Text = "Register Title switch menu";
+            btn_TitleSwitchMenu.Text = "Register Title switch menu key";
             btn_TitleSwitchMenu.UseVisualStyleBackColor = true;
             btn_TitleSwitchMenu.Click += HotkeyButton_Click;
             // 
@@ -120,7 +120,7 @@
             btn__Switching_reset.TabStop = false;
             btn__Switching_reset.Text = "<< Reset";
             btn__Switching_reset.UseVisualStyleBackColor = true;
-            btn__Switching_reset.Click += btn__Switching_reset_Click;
+            btn__Switching_reset.Click += HotkeyResetButton_Click;
             // 
             // btn_NPWG
             // 
@@ -217,7 +217,7 @@
             btn_TimerReset.Size = new Size(116, 43);
             btn_TimerReset.TabIndex = 12;
             btn_TimerReset.TabStop = false;
-            btn_TimerReset.Text = "Register key to reset all timers";
+            btn_TimerReset.Text = "Register key to Clear Timers";
             btn_TimerReset.UseVisualStyleBackColor = true;
             btn_TimerReset.Click += HotkeyButton_Click;
             // 
@@ -230,7 +230,7 @@
             btn_NPWG_reset.TabStop = false;
             btn_NPWG_reset.Text = "<< Reset";
             btn_NPWG_reset.UseVisualStyleBackColor = true;
-            btn_NPWG_reset.Click += btn_NPWG_reset_Click;
+            btn_NPWG_reset.Click += HotkeyResetButton_Click;
             // 
             // btn_NPWG_Skill_reset
             // 
@@ -241,7 +241,7 @@
             btn_NPWG_Skill_reset.TabStop = false;
             btn_NPWG_Skill_reset.Text = "<< Reset";
             btn_NPWG_Skill_reset.UseVisualStyleBackColor = true;
-            btn_NPWG_Skill_reset.Click += btn_NPWG_Skill_reset_Click;
+            btn_NPWG_Skill_reset.Click += HotkeyResetButton_Click;
             // 
             // btn_FreedShadow_reset
             // 
@@ -252,7 +252,7 @@
             btn_FreedShadow_reset.TabStop = false;
             btn_FreedShadow_reset.Text = "<< Reset";
             btn_FreedShadow_reset.UseVisualStyleBackColor = true;
-            btn_FreedShadow_reset.Click += btn_FreedShadow_reset_Click;
+            btn_FreedShadow_reset.Click += HotkeyResetButton_Click;
             // 
             // btn_Dusk_reset
             // 
@@ -263,7 +263,7 @@
             btn_Dusk_reset.TabStop = false;
             btn_Dusk_reset.Text = "<< Reset";
             btn_Dusk_reset.UseVisualStyleBackColor = true;
-            btn_Dusk_reset.Click += btn_Dusk_reset_Click;
+            btn_Dusk_reset.Click += HotkeyResetButton_Click;
             // 
             // btn_Natural_reset
             // 
@@ -274,7 +274,7 @@
             btn_Natural_reset.TabStop = false;
             btn_Natural_reset.Text = "<< Reset";
             btn_Natural_reset.UseVisualStyleBackColor = true;
-            btn_Natural_reset.Click += btn_Natural_reset_Click;
+            btn_Natural_reset.Click += HotkeyResetButton_Click;
             // 
             // btn_Awakening_reset
             // 
@@ -285,7 +285,7 @@
             btn_Awakening_reset.TabStop = false;
             btn_Awakening_reset.Text = "<< Reset";
             btn_Awakening_reset.UseVisualStyleBackColor = true;
-            btn_Awakening_reset.Click += btn_Awakening_reset_Click;
+            btn_Awakening_reset.Click += HotkeyResetButton_Click;
             // 
             // btn_Onion_reset
             // 
@@ -296,7 +296,7 @@
             btn_Onion_reset.TabStop = false;
             btn_Onion_reset.Text = "<< Reset";
             btn_Onion_reset.UseVisualStyleBackColor = true;
-            btn_Onion_reset.Click += btn_Onion_reset_Click;
+            btn_Onion_reset.Click += HotkeyResetButton_Click;
             // 
             // btn_Apple_reset
             // 
@@ -307,7 +307,7 @@
             btn_Apple_reset.TabStop = false;
             btn_Apple_reset.Text = "<< Reset";
             btn_Apple_reset.UseVisualStyleBackColor = true;
-            btn_Apple_reset.Click += btn_Apple_reset_Click;
+            btn_Apple_reset.Click += HotkeyResetButton_Click;
             // 
             // btn_TimerReset_reset
             // 
@@ -318,7 +318,7 @@
             btn_TimerReset_reset.TabStop = false;
             btn_TimerReset_reset.Text = "<< Reset";
             btn_TimerReset_reset.UseVisualStyleBackColor = true;
-            btn_TimerReset_reset.Click += btn_TimerReset_reset_Click;
+            btn_TimerReset_reset.Click += HotkeyResetButton_Click;
             // 
             // check_NPWG
             // 
@@ -409,100 +409,100 @@
             // 
             // label_Switching
             // 
-            label_Switching.AutoSize = true;
-            label_Switching.Location = new Point(134, 18);
+            label_Switching.AutoSize = false;
+            label_Switching.Location = new Point(128, 18);
             label_Switching.Name = "label_Switching";
-            label_Switching.Size = new Size(87, 30);
+            label_Switching.Size = new Size(114, 30);
             label_Switching.TabIndex = 30;
-            label_Switching.Text = "Current registered key\r\n[None]";
+            label_Switching.Text = "Current key\r\n[None]";
             label_Switching.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_NPWG
             // 
-            label_NPWG.AutoSize = true;
-            label_NPWG.Location = new Point(134, 67);
+            label_NPWG.AutoSize = false;
+            label_NPWG.Location = new Point(128, 67);
             label_NPWG.Name = "label_NPWG";
-            label_NPWG.Size = new Size(87, 30);
+            label_NPWG.Size = new Size(114, 30);
             label_NPWG.TabIndex = 31;
             label_NPWG.Text = "Current key\r\n[None]";
             label_NPWG.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_NPWG_Skill
             // 
-            label_NPWG_Skill.AutoSize = true;
-            label_NPWG_Skill.Location = new Point(134, 116);
+            label_NPWG_Skill.AutoSize = false;
+            label_NPWG_Skill.Location = new Point(128, 116);
             label_NPWG_Skill.Name = "label_NPWG_Skill";
-            label_NPWG_Skill.Size = new Size(87, 30);
+            label_NPWG_Skill.Size = new Size(114, 30);
             label_NPWG_Skill.TabIndex = 32;
             label_NPWG_Skill.Text = "Current key\r\n[None]";
             label_NPWG_Skill.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_FreedShadow
             // 
-            label_FreedShadow.AutoSize = true;
-            label_FreedShadow.Location = new Point(134, 165);
+            label_FreedShadow.AutoSize = false;
+            label_FreedShadow.Location = new Point(128, 165);
             label_FreedShadow.Name = "label_FreedShadow";
-            label_FreedShadow.Size = new Size(87, 30);
+            label_FreedShadow.Size = new Size(114, 30);
             label_FreedShadow.TabIndex = 33;
             label_FreedShadow.Text = "Current key\r\n[None]";
             label_FreedShadow.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_Dusk
             // 
-            label_Dusk.AutoSize = true;
-            label_Dusk.Location = new Point(134, 214);
+            label_Dusk.AutoSize = false;
+            label_Dusk.Location = new Point(128, 214);
             label_Dusk.Name = "label_Dusk";
-            label_Dusk.Size = new Size(87, 30);
+            label_Dusk.Size = new Size(114, 30);
             label_Dusk.TabIndex = 34;
             label_Dusk.Text = "Current key\r\n[None]";
             label_Dusk.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_Natural
             // 
-            label_Natural.AutoSize = true;
-            label_Natural.Location = new Point(134, 263);
+            label_Natural.AutoSize = false;
+            label_Natural.Location = new Point(128, 263);
             label_Natural.Name = "label_Natural";
-            label_Natural.Size = new Size(87, 30);
+            label_Natural.Size = new Size(114, 30);
             label_Natural.TabIndex = 35;
             label_Natural.Text = "Current key\r\n[None]";
             label_Natural.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_Awakening
             // 
-            label_Awakening.AutoSize = true;
-            label_Awakening.Location = new Point(134, 312);
+            label_Awakening.AutoSize = false;
+            label_Awakening.Location = new Point(128, 312);
             label_Awakening.Name = "label_Awakening";
-            label_Awakening.Size = new Size(87, 30);
+            label_Awakening.Size = new Size(114, 30);
             label_Awakening.TabIndex = 36;
             label_Awakening.Text = "Current key\r\n[None]";
             label_Awakening.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_Onion
             // 
-            label_Onion.AutoSize = true;
-            label_Onion.Location = new Point(134, 361);
+            label_Onion.AutoSize = false;
+            label_Onion.Location = new Point(128, 361);
             label_Onion.Name = "label_Onion";
-            label_Onion.Size = new Size(87, 30);
+            label_Onion.Size = new Size(114, 30);
             label_Onion.TabIndex = 37;
             label_Onion.Text = "Current key\r\n[None]";
             label_Onion.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_Apple
             // 
-            label_Apple.AutoSize = true;
-            label_Apple.Location = new Point(134, 410);
+            label_Apple.AutoSize = false;
+            label_Apple.Location = new Point(128, 410);
             label_Apple.Name = "label_Apple";
-            label_Apple.Size = new Size(87, 30);
+            label_Apple.Size = new Size(114, 30);
             label_Apple.TabIndex = 38;
             label_Apple.Text = "Current key\r\n[None]";
             label_Apple.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_TimerReset
             // 
-            label_TimerReset.AutoSize = true;
-            label_TimerReset.Location = new Point(134, 508);
+            label_TimerReset.AutoSize = false;
+            label_TimerReset.Location = new Point(128, 508);
             label_TimerReset.Name = "label_TimerReset";
-            label_TimerReset.Size = new Size(87, 30);
+            label_TimerReset.Size = new Size(114, 30);
             label_TimerReset.TabIndex = 39;
             label_TimerReset.Text = "Current key\r\n[None]";
             label_TimerReset.TextAlign = ContentAlignment.MiddleCenter;
@@ -566,14 +566,14 @@
             btn_FOD.TabStop = false;
             btn_FOD.Text = "Register Pseudo FOD key";
             btn_FOD.UseVisualStyleBackColor = true;
-            btn_FOD.Click += btn_FOD_Click;
+            btn_FOD.Click += HotkeyButton_Click;
             // 
             // label_FOD
             // 
-            label_FOD.AutoSize = true;
-            label_FOD.Location = new Point(134, 459);
+            label_FOD.AutoSize = false;
+            label_FOD.Location = new Point(128, 459);
             label_FOD.Name = "label_FOD";
-            label_FOD.Size = new Size(87, 30);
+            label_FOD.Size = new Size(114, 30);
             label_FOD.TabIndex = 46;
             label_FOD.Text = "Current key\r\n[None]";
             label_FOD.TextAlign = ContentAlignment.MiddleCenter;
@@ -587,7 +587,7 @@
             btn_FOD_reset.TabStop = false;
             btn_FOD_reset.Text = "<< Reset";
             btn_FOD_reset.UseVisualStyleBackColor = true;
-            btn_FOD_reset.Click += btn_FOD_reset_Click;
+            btn_FOD_reset.Click += HotkeyResetButton_Click;
             // 
             // label2
             // 
@@ -629,7 +629,7 @@
             // 
             btn_Chg_Imgsize.Location = new Point(363, 687);
             btn_Chg_Imgsize.Name = "btn_Chg_Imgsize";
-            btn_Chg_Imgsize.Size = new Size(43, 23);
+            btn_Chg_Imgsize.Size = new Size(55, 23);
             btn_Chg_Imgsize.TabIndex = 52;
             btn_Chg_Imgsize.TabStop = false;
             btn_Chg_Imgsize.Text = "Change";
@@ -640,7 +640,7 @@
             // 
             text_imgSize.Location = new Point(298, 686);
             text_imgSize.Name = "text_imgSize";
-            text_imgSize.Size = new Size(40, 23);
+            text_imgSize.Size = new Size(55, 23);
             text_imgSize.TabIndex = 51;
             text_imgSize.TabStop = false;
             text_imgSize.KeyPress += textBox1_KeyPress;
@@ -665,7 +665,7 @@
             check_Resize.Size = new Size(186, 34);
             check_Resize.TabIndex = 55;
             check_Resize.TabStop = false;
-            check_Resize.Text = "Check after changing all title window sizes\n(Removes annoying button)";
+            check_Resize.Text = "Lock Title Window size";
             check_Resize.TextAlign = ContentAlignment.MiddleCenter;
             check_Resize.UseVisualStyleBackColor = true;
             check_Resize.CheckedChanged += check_Resize_CheckedChanged;
