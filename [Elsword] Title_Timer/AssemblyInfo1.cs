@@ -1,15 +1,14 @@
 using System.Runtime.InteropServices;
 
-// 이와 같은 SDK 스타일 프로젝트에서는 이 파일에 지금까지 정의된 여러 어셈블리 특성이 이제 빌드 중에 자동으로 추가되고 프로젝트 속성에 정의된
-// 값으로 채워집니다. 포함된 특성에 대한 자세한 내용과 이 프로세스를 사용자 지정하는 방법에 대해서는 https://aka.ms/assembly-info-properties를
-// 참조하세요.
+// In SDK-style projects like this one, many assembly attributes that were previously defined in this file are now automatically added during build and populated with values defined in project properties.
+// For more information on included attributes and how to customize this process, see https://aka.ms/assembly-info-properties.
 
 
-// ComVisible을 false로 설정하면 이 어셈블리의 형식이 COM 구성 요소에 표시되지 않습니다.  COM에서 이 어셈블리의 형식에 액세스하려면
-// 해당 형식에 대해 ComVisible 특성을 true로 설정하세요.
+// Setting ComVisible to false makes the types in this assembly not visible to COM components.
+// If you need to access a type in this assembly from COM, set the ComVisible attribute to true on that type.
 
 [assembly: ComVisible(false)]
 
-// 이 프로젝트가 COM에 노출되는 경우 다음 GUID는 typelib의 ID를 나타냅니다.
+// If this project is exposed to COM, the following GUID is for the ID of the typelib.
 
 [assembly: Guid("3da09915-000a-4b98-a8f8-69672b1a0b33")]

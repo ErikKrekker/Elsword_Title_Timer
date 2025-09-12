@@ -6,13 +6,9 @@ using ImGuiNET;
 using System.Numerics;
 
 
-namespace _Elsword__Title_Timer
-{
+namespace _Elsword__Title_Timer {
 
-    public unsafe class TimerOverlay : Overlay
-    {
-
-
+    public unsafe class TimerOverlay : Overlay {
         private static int custom_Minimize;
         private static int custom_ChangeTitle;
         private static int custom_NPWG;
@@ -29,7 +25,6 @@ namespace _Elsword__Title_Timer
         public static bool Use_FreedShadow_FOD = false;
         public static bool Use_Dusk_FOD = false;
         public static bool ADD_User = false;
-
 
         public int form_custom_ChangeTitle;
         public int form_custom_NPWG;
@@ -51,33 +46,26 @@ namespace _Elsword__Title_Timer
         public bool form_ADD_User = false;
         public bool allowResize = false;
 
-
         private static int awakening_Count = 1;
-
         private Thread overlayThread;
 
-        public unsafe TimerOverlay() : base(8000, 8000)
-        {
+        public unsafe TimerOverlay() : base(8000, 8000) {
 
-            overlayThread = new Thread(() =>
-            {
-                var form1 = new Form1(this); // TimerOverlay 인스턴스를 Form1에 전달
-                System.Windows.Forms.Application.Run(form1); // Form1을 메인 스레드에서 실행
+            overlayThread = new Thread(() => {
+                var form1 = new Form1(this); // Pass TimerOverlay instance to Form1
+                System.Windows.Forms.Application.Run(form1); // Run Form1 on the main thread
             });
-            overlayThread.SetApartmentState(ApartmentState.STA); // STA 스레드 설정
-            overlayThread.Start(); // 스레드 시작
-
+            overlayThread.SetApartmentState(ApartmentState.STA); // Set STA thread
+            overlayThread.Start(); // Start thread
         }
 
 
         public int FontSize { get; set; } = 55;
-
         public float fontScale { get; set; } = 80 / 100f;
         public float imgScale { get; set; } = 40 / 100f;
 
         public bool isInitialized = false;
-        private unsafe void InitializeOnce()
-        {
+        private unsafe void InitializeOnce() {
             ImGuiIOPtr io = ImGui.GetIO();
             ReplaceFont(@"C:\Windows\Fonts\malgun.ttf", FontSize, FontGlyphRangeType.Korean);
             io.FontGlobalScale = 1.0f;
@@ -85,10 +73,7 @@ namespace _Elsword__Title_Timer
             SetHook();
         }
 
-
-
-        private void synchronization()
-        {
+        private void synchronization() {
             custom_ChangeTitle = form_custom_ChangeTitle;
             custom_NPWG = form_custom_NPWG;
             custom_NPWG_Skill = form_custom_NPWG_Skill;
@@ -106,18 +91,13 @@ namespace _Elsword__Title_Timer
             ADD_User = form_ADD_User;
         }
 
-
-
-        protected override void Render()
-        {
-
+        protected override void Render() {
             //ImGui.ShowDemoWindow();
             synchronization();
 
-            if (!isInitialized)
-            {
-                InitializeOnce(); // ImGui가 초기화된 후에만 실행
-                isInitialized = true; // 초기화 완료 표시
+            if (!isInitialized) {
+                InitializeOnce(); // Only run after ImGui is initialized
+                isInitialized = true; // Mark initialization as complete
             }
 
 
@@ -133,15 +113,11 @@ namespace _Elsword__Title_Timer
             {
                 RenderOverlay_The_Setting_Sun();
             }
-
-
-
             return;
         }
 
 
-        private void RenderOverlay_Freed_Shadow()
-        {
+        private void RenderOverlay_Freed_Shadow() {
             var windowFlags = allowResize ? ImGuiWindowFlags.NoResize : ImGuiWindowFlags.None;
 
             ImGui.Begin(
@@ -154,20 +130,13 @@ namespace _Elsword__Title_Timer
             var windowSize = ImGui.GetWindowSize();
             float imgScaleFactor = imgScale;
 
-            // 이미지 크기 계산
+            // Calculate image size
             var imgWidth = windowSize.X * imgScaleFactor;
             var imgHeight = windowSize.Y * 0.8f;
             var imgSize = new Vector2(imgWidth, imgHeight);
 
-
-
-
-            if (FreedShadow_Count > 0)
-            {
-
-
-                if (File.Exists("FreedShadow_GrayScale.png"))
-                {
+            if (FreedShadow_Count > 0) {
+                if (File.Exists("FreedShadow_GrayScale.png")) {
                     AddOrGetImagePointer(
                         "FreedShadow_GrayScale.png",
                         false,
@@ -181,16 +150,12 @@ namespace _Elsword__Title_Timer
                     ImGui.Text($"{FreedShadow_Count}");
 
                 }
-                else
-                {
+                else {
                     ImGui.Text("Put any image where the exe is, name is 'FreedShadow_GrayScale.png'");
                 }
 
-            }
-            else
-            {
-                if (File.Exists("FreedShadow.png"))
-                {
+            } else {
+                if (File.Exists("FreedShadow.png")) {
                     AddOrGetImagePointer(
                         "FreedShadow.png",
                         false,
@@ -202,19 +167,14 @@ namespace _Elsword__Title_Timer
                     ImGui.SetWindowFontScale(fontScale);
                     ImGui.SameLine();
                     ImGui.Text($"ON");
-
-                }
-                else
-                {
+                } else {
                     ImGui.Text("Put any image where the exe is, name is 'FreedShadow.png'");
                 }
             }
             ImGui.End();
-
         }
 
-        private void RenderOverlay_NPWG()
-        {
+        private void RenderOverlay_NPWG() {
             var windowFlags = allowResize ? ImGuiWindowFlags.NoResize : ImGuiWindowFlags.None;
 
             ImGui.Begin(
@@ -228,19 +188,13 @@ namespace _Elsword__Title_Timer
             var windowSize = ImGui.GetWindowSize();
             float imgScaleFactor = imgScale;
 
-            // 이미지 크기 계산
+            // Calculate image size
             var imgWidth = windowSize.X * imgScaleFactor;
             var imgHeight = windowSize.Y * 0.8f;
             var imgSize = new Vector2(imgWidth, imgHeight);
 
-
-
-            if (NPWG_Count > 0)
-            {
-
-
-                if (File.Exists("NPWG_GrayScale.png"))
-                {
+            if (NPWG_Count > 0) {
+                if (File.Exists("NPWG_GrayScale.png")) {
                     AddOrGetImagePointer(
                         "NPWG_GrayScale.png",
                         false,
@@ -252,18 +206,11 @@ namespace _Elsword__Title_Timer
                     ImGui.SetWindowFontScale(fontScale);
                     ImGui.SameLine();
                     ImGui.Text($"{NPWG_Count}");
-
-                }
-                else
-                {
+                } else {
                     ImGui.Text("Put any image where the exe is, name is 'NPWG_GrayScale.png'");
                 }
-
-            }
-            else
-            {
-                if (File.Exists("NPWG.png"))
-                {
+            } else {
+                if (File.Exists("NPWG.png")) {
                     AddOrGetImagePointer(
                         "NPWG.png",
                         false,
@@ -275,19 +222,14 @@ namespace _Elsword__Title_Timer
                     ImGui.SetWindowFontScale(fontScale);
                     ImGui.SameLine();
                     ImGui.Text($"ON");
-
-                }
-                else
-                {
+                } else {
                     ImGui.Text("Put any image where the exe is, name is 'NPWG.png'");
                 }
             }
             ImGui.End();
-
         }
 
-        private void RenderOverlay_The_Setting_Sun()
-        {
+        private void RenderOverlay_The_Setting_Sun() {
             var windowFlags = allowResize ? ImGuiWindowFlags.NoResize : ImGuiWindowFlags.None;
 
             ImGui.Begin(
@@ -297,20 +239,16 @@ namespace _Elsword__Title_Timer
                 ImGuiWindowFlags.NoTitleBar |
                 ImGuiWindowFlags.NoDocking | windowFlags);
 
-            // 현재 창의 크기 가져오기
+            // Get current window size
             var windowSize = ImGui.GetWindowSize();
             float imgScaleFactor = imgScale;
 
-            // 이미지 크기 계산
+            // Calculate image size
             var imgWidth = windowSize.X * imgScaleFactor;
             var imgHeight = windowSize.Y * 0.8f;
             var imgSize = new Vector2(imgWidth, imgHeight);
 
-
-            if (The_Setting_Sun_Count > 0)
-            {
-
-
+            if (The_Setting_Sun_Count > 0) {
                 if (File.Exists("The_Setting_Sun_GrayScale.png"))
                 {
                     AddOrGetImagePointer(
@@ -324,18 +262,11 @@ namespace _Elsword__Title_Timer
                     ImGui.SetWindowFontScale(fontScale);
                     ImGui.SameLine();
                     ImGui.Text($"{The_Setting_Sun_Count}");
-
-                }
-                else
-                {
+                } else {
                     ImGui.Text("Put any image where the exe is, name is 'The_Setting_Sun_GrayScale.png'");
                 }
-
-            }
-            else
-            {
-                if (File.Exists("The_Setting_Sun.png"))
-                {
+            } else {
+                if (File.Exists("The_Setting_Sun.png")) {
                     AddOrGetImagePointer(
                         "The_Setting_Sun.png",
                         false,
@@ -347,18 +278,12 @@ namespace _Elsword__Title_Timer
                     ImGui.SetWindowFontScale(fontScale);
                     ImGui.SameLine();
                     ImGui.Text($"ON");
-
-                }
-                else
-                {
+                } else {
                     ImGui.Text("Put any image where the exe is, name is 'The_Setting_Sun.png'");
                 }
             }
-
             ImGui.End();
-
         }
-
 
         [DllImport("user32.dll")]
         private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc callback, IntPtr hInstance, uint Threadld);
@@ -369,7 +294,6 @@ namespace _Elsword__Title_Timer
         [DllImport("kernel32.dll")]
         private static extern IntPtr GetModuleHandle(string ipModuleName);
 
-
         private const int WH_KEYBOARD_LL = 13;
 
         private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wearable, IntPtr lParam);
@@ -379,24 +303,19 @@ namespace _Elsword__Title_Timer
         private static int FreedShadow_Count = 0;
         private static int The_Setting_Sun_Count = 0;
 
-        //이 위로는 DLL import 등입니다.
-
+        // Above this are DLL imports, etc.
         private static LowLevelKeyboardProc keyboardProc = KeyboardHookProc;
         private static IntPtr keyHook = IntPtr.Zero;
-
 
         private static System.Threading.Timer timer_ChangeTitle = new System.Threading.Timer(TimerCallback_ChangeTitle, null, Timeout.Infinite, Timeout.Infinite);
         private static System.Threading.Timer timer_NPWG = new System.Threading.Timer(TimerCallback_NPWG, null, Timeout.Infinite, Timeout.Infinite);
         private static System.Threading.Timer timer_FreedShadow = new System.Threading.Timer(TimerCallback_FreedShadow, null, Timeout.Infinite, Timeout.Infinite);
-        //private static System.Threading.Timer timer_Right = new System.Threading.Timer(TimerCallback_Right, null, Timeout.Infinite, Timeout.Infinite);
         private static System.Threading.Timer timer_The_Setting_Sun = new System.Threading.Timer(TimerCallback_The_Setting_Sun, null, Timeout.Infinite, Timeout.Infinite);
 
-
-        //후킹을 설정해줍니다.
-        public static void SetHook()
-        {
-            if (keyHook == IntPtr.Zero)
-            {
+    // Set up the hook
+    public static void SetHook() {
+            // (Unused) Timer for right key
+            if (keyHook == IntPtr.Zero) {
                 using (Process curProcess = Process.GetCurrentProcess())
                 using (ProcessModule curModule = curProcess.MainModule)
                 {
@@ -405,223 +324,132 @@ namespace _Elsword__Title_Timer
             }
         }
 
-
-        private static IntPtr KeyboardHookProc(int code, IntPtr wParam, IntPtr lParam)
-        {
-
-            if (code >= 0 && (int)wParam == 256)
-            {
+        private static IntPtr KeyboardHookProc(int code, IntPtr wParam, IntPtr lParam) {
+            if (code >= 0 && (int)wParam == 256) {
                 int keyCode = Marshal.ReadInt32(lParam);
 
-                if (keyCode == custom_ChangeTitle)
-                {
-
+                if (keyCode == custom_ChangeTitle) {
                     isChangeTitlePressed = true;
-
                     timer_ChangeTitle.Change(3000, Timeout.Infinite);
-                }
-                else if (keyCode == custom_NPWG && isChangeTitlePressed)
-                {
+                } else if (keyCode == custom_NPWG && isChangeTitlePressed) {
                     title_Desc = "NPWG";
                     isChangeTitlePressed = false;
                     timer_ChangeTitle.Change(Timeout.Infinite, Timeout.Infinite);
-
-                }
-                else if (keyCode == custom_FreedShadow && isChangeTitlePressed)
-                {
+                } else if (keyCode == custom_FreedShadow && isChangeTitlePressed) {
                     title_Desc = "FreedShadow";
                     isChangeTitlePressed = false;
                     timer_ChangeTitle.Change(Timeout.Infinite, Timeout.Infinite);
-
-                }
-                else if (keyCode == custom_Natural_Flow && isChangeTitlePressed)
-                {
+                } else if (keyCode == custom_Natural_Flow && isChangeTitlePressed) {
                     title_Desc = "Natural Flow";
                     isChangeTitlePressed = false;
                     timer_ChangeTitle.Change(Timeout.Infinite, Timeout.Infinite);
-                }
-                else if (keyCode == custom_The_Setting_Sun && isChangeTitlePressed)
-                {
+                } else if (keyCode == custom_The_Setting_Sun && isChangeTitlePressed) {
                     title_Desc = "The_Setting_Sun";
                     isChangeTitlePressed = false;
                     timer_ChangeTitle.Change(Timeout.Infinite, Timeout.Infinite);
-
-                }
-                else if (keyCode == custom_NPWG_Skill && title_Desc == "NPWG" && !Use_NPWG_FOD)
-                {
-                    if (NPWG_Count <= 0)
-                    {
+                } else if (keyCode == custom_NPWG_Skill && title_Desc == "NPWG" && !Use_NPWG_FOD) {
+                    if (NPWG_Count <= 0) {
                         NPWG_Count = 26;
                         timer_NPWG.Change(0, 1000);
                     }
-                }
-                else if (keyCode == custom_Awakening)
-                {
-                    if (ADD_User)
-                    {
-                        if (awakening_Count == 1)
-                        {
-                            if (title_Desc == "FreedShadow" && !Use_FreedShadow_FOD)
-                            {
-                                if (FreedShadow_Count <= 0)
-                                {
+                } else if (keyCode == custom_Awakening) {
+                    if (ADD_User) {
+                        if (awakening_Count == 1) {
+                            if (title_Desc == "FreedShadow" && !Use_FreedShadow_FOD) {
+                                if (FreedShadow_Count <= 0) {
                                     FreedShadow_Count = 61;
                                     timer_FreedShadow.Change(0, 1000);
                                 }
-                            }
-                            else if (title_Desc == "The_Setting_Sun" && !Use_Dusk_FOD)
-                            {
-                                if (The_Setting_Sun_Count <= 0)
-                                {
+                            } else if (title_Desc == "The_Setting_Sun" && !Use_Dusk_FOD) {
+                                if (The_Setting_Sun_Count <= 0) {
                                     The_Setting_Sun_Count = 31;
                                     timer_The_Setting_Sun.Change(0, 1000);
                                 }
                             }
-
                             awakening_Count = 0;
-                        }
-                        else
-                        {
+                        } else {
                             awakening_Count++;
                         }
-
                     }
-                    else
-                    {
-                        if (title_Desc == "FreedShadow" && !Use_FreedShadow_FOD)
-                        {
-                            if (FreedShadow_Count <= 0)
-                            {
+                    else {
+                        if (title_Desc == "FreedShadow" && !Use_FreedShadow_FOD) {
+                            if (FreedShadow_Count <= 0) {
                                 FreedShadow_Count = 61;
                                 timer_FreedShadow.Change(0, 1000);
                             }
-                        }
-                        else if (title_Desc == "The_Setting_Sun" && !Use_Dusk_FOD)
-                        {
-                            if (The_Setting_Sun_Count <= 0)
-                            {
+                        } else if (title_Desc == "The_Setting_Sun" && !Use_Dusk_FOD) {
+                            if (The_Setting_Sun_Count <= 0) {
                                 The_Setting_Sun_Count = 31;
                                 timer_The_Setting_Sun.Change(0, 1000);
                             }
                         }
                     }
-                }
-
-
-                else if ((keyCode == custom_Onion || keyCode == custom_Superhuman_Apple) && title_Desc == "FreedShadow" && !Use_FreedShadow_FOD)
-                {
-                    if (FreedShadow_Count <= 0)
-                    {
+                } else if ((keyCode == custom_Onion || keyCode == custom_Superhuman_Apple) && title_Desc == "FreedShadow" && !Use_FreedShadow_FOD) {
+                    if (FreedShadow_Count <= 0) {
                         FreedShadow_Count = 61;
                         timer_FreedShadow.Change(0, 1000);
                     }
-                }
-                else if ((keyCode == custom_Onion || keyCode == custom_Superhuman_Apple) && title_Desc == "The_Setting_Sun" && !Use_Dusk_FOD)
-                {
-                    if (The_Setting_Sun_Count <= 0)
-                    {
+                } else if ((keyCode == custom_Onion || keyCode == custom_Superhuman_Apple) && title_Desc == "The_Setting_Sun" && !Use_Dusk_FOD) {
+                    if (The_Setting_Sun_Count <= 0) {
                         The_Setting_Sun_Count = 31;
                         timer_The_Setting_Sun.Change(0, 1000);
                     }
-                }
-                else if (keyCode == custom_FOD)
-                {
-                    if (title_Desc == "NPWG" && Use_NPWG_FOD)
-                    {
-                        if (NPWG_Count <= 0)
-                        {
+                } else if (keyCode == custom_FOD) {
+                    if (title_Desc == "NPWG" && Use_NPWG_FOD) {
+                        if (NPWG_Count <= 0) {
                             NPWG_Count = 26;
                             timer_NPWG.Change(0, 1000);
                         }
-                    }
-                    else if (title_Desc == "FreedShadow" && Use_FreedShadow_FOD)
-                    {
-                        if (FreedShadow_Count <= 0)
-                        {
+                    } else if (title_Desc == "FreedShadow" && Use_FreedShadow_FOD) {
+                        if (FreedShadow_Count <= 0) {
                             FreedShadow_Count = 61;
                             timer_FreedShadow.Change(0, 1000);
                         }
-                    }
-                    else if (title_Desc == "The_Setting_Sun" && Use_Dusk_FOD)
-                    {
-                        if (The_Setting_Sun_Count <= 0)
-                        {
+                    } else if (title_Desc == "The_Setting_Sun" && Use_Dusk_FOD) {
+                        if (The_Setting_Sun_Count <= 0) {
                             The_Setting_Sun_Count = 31;
                             timer_The_Setting_Sun.Change(0, 1000);
                         }
                     }
-                }
-                else if (keyCode == custom_Reset)
-                {
-
+                } else if (keyCode == custom_Reset) {
                     timer_ChangeTitle.Change(Timeout.Infinite, Timeout.Infinite);
                     NPWG_Count = 0;
                     FreedShadow_Count = 0;
                     The_Setting_Sun_Count = 0;
                     awakening_Count = 1;
-
                 }
             }
 
             return CallNextHookEx(keyHook, code, wParam, lParam);
         }
 
-        private static void TimerCallback_ChangeTitle(object state)
-        {
+        private static void TimerCallback_ChangeTitle(object state) {
             isChangeTitlePressed = false;
         }
 
-        private static void TimerCallback_NPWG(object state)
-        {
-
-            if (NPWG_Count > 0)
-            {
+        private static void TimerCallback_NPWG(object state) {
+            if (NPWG_Count > 0) {
                 NPWG_Count--;
             }
-
         }
 
-        private static void TimerCallback_FreedShadow(object state)
-        {
-
-            if (FreedShadow_Count > 0)
-            {
+        private static void TimerCallback_FreedShadow(object state) {
+            if (FreedShadow_Count > 0) {
                 FreedShadow_Count--;
             }
-
         }
 
-        //private static void TimerCallback_Right(object state)
-        //{
-
-        //}
-
-        private static void TimerCallback_The_Setting_Sun(object state)
-        {
-
-            if (The_Setting_Sun_Count > 0)
-            {
+        private static void TimerCallback_The_Setting_Sun(object state) {
+            if (The_Setting_Sun_Count > 0) {
                 The_Setting_Sun_Count--;
             }
-
         }
-
-
-
-        private void UnHook()
-        {
+        private void UnHook() {
             UnhookWindowsHookEx(keyHook);
         }
 
-        private void Form1_Closing(object sender, EventArgs e)
-        {
+        private void Form1_Closing(object sender, EventArgs e) {
             UnHook();
         }
-
-
-
-
     }
 }
-
-
