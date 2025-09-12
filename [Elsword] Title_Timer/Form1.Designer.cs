@@ -109,7 +109,7 @@
             btn_Switching.TabStop = false;
             btn_Switching.Text = "칭호 스위칭 키\r\n등록버튼";
             btn_Switching.UseVisualStyleBackColor = true;
-            btn_Switching.Click += btn_Switching_Click;
+            btn_Switching.Click += HotkeyButton_Click;
             // 
             // btn__Switching_reset
             // 
@@ -131,7 +131,7 @@
             btn_NPWG.TabStop = false;
             btn_NPWG.Text = "백귀 방향키\r\n등록버튼";
             btn_NPWG.UseVisualStyleBackColor = true;
-            btn_NPWG.Click += btn_NPWG_Click;
+            btn_NPWG.Click += HotkeyButton_Click;
             // 
             // btn_NPWG_Skill
             // 
@@ -142,7 +142,7 @@
             btn_NPWG_Skill.TabStop = false;
             btn_NPWG_Skill.Text = "백귀 스킬키\r\n등록버튼";
             btn_NPWG_Skill.UseVisualStyleBackColor = true;
-            btn_NPWG_Skill.Click += btn_NPWG_Skill_Click;
+            btn_NPWG_Skill.Click += HotkeyButton_Click;
             // 
             // btn_FreedShadow
             // 
@@ -153,7 +153,7 @@
             btn_FreedShadow.TabStop = false;
             btn_FreedShadow.Text = "풀그 방향키\r\n등록버튼";
             btn_FreedShadow.UseVisualStyleBackColor = true;
-            btn_FreedShadow.Click += btn_FreedShadow_Click;
+            btn_FreedShadow.Click += HotkeyButton_Click;
             // 
             // btn_Dusk
             // 
@@ -164,7 +164,7 @@
             btn_Dusk.TabStop = false;
             btn_Dusk.Text = "황혼 방향키\r\n등록버튼";
             btn_Dusk.UseVisualStyleBackColor = true;
-            btn_Dusk.Click += btn_Dusk_Click;
+            btn_Dusk.Click += HotkeyButton_Click;
             // 
             // btn_Natural
             // 
@@ -175,7 +175,7 @@
             btn_Natural.TabStop = false;
             btn_Natural.Text = "순리 방향키\r\n등록버튼";
             btn_Natural.UseVisualStyleBackColor = true;
-            btn_Natural.Click += btn_Natural_Click;
+            btn_Natural.Click += HotkeyButton_Click;
             // 
             // btn_Awakening
             // 
@@ -186,7 +186,7 @@
             btn_Awakening.TabStop = false;
             btn_Awakening.Text = "각성키\r\n등록버튼";
             btn_Awakening.UseVisualStyleBackColor = true;
-            btn_Awakening.Click += btn_Awakening_Click;
+            btn_Awakening.Click += HotkeyButton_Click;
             // 
             // btn_Onion
             // 
@@ -197,7 +197,7 @@
             btn_Onion.TabStop = false;
             btn_Onion.Text = "양파 사용키\r\n등록버튼";
             btn_Onion.UseVisualStyleBackColor = true;
-            btn_Onion.Click += btn_Onion_Click;
+            btn_Onion.Click += HotkeyButton_Click;
             // 
             // btn_Apple
             // 
@@ -208,7 +208,7 @@
             btn_Apple.TabStop = false;
             btn_Apple.Text = "사과 사용키\r\n등록버튼";
             btn_Apple.UseVisualStyleBackColor = true;
-            btn_Apple.Click += btn_Apple_Click;
+            btn_Apple.Click += HotkeyButton_Click;
             // 
             // btn_TimerReset
             // 
@@ -219,7 +219,7 @@
             btn_TimerReset.TabStop = false;
             btn_TimerReset.Text = "타이머 초기화 키\r\n등록버튼";
             btn_TimerReset.UseVisualStyleBackColor = true;
-            btn_TimerReset.Click += btn_TimerReset_Click;
+            btn_TimerReset.Click += HotkeyButton_Click;
             // 
             // btn_NPWG_reset
             // 

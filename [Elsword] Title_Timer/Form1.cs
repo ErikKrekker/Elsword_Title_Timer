@@ -47,11 +47,14 @@ namespace _Elsword__Title_Timer {
         public static bool IsCapturing_TimerReset = false;
 
         const string REGISTERED_KEY_TEXT = "Currently registered key\r\n";
+        private List<HotkeyBinding> hotkeyBindings;
+
 
         public Form1(TimerOverlay overlay)
         {
             InitializeComponent();
             timerOverlay = overlay; // Store TimerOverlay instance
+            hotkeyBindings = createHotKeyBindings();
             this.FormClosing += OnFormClosing; // Register FormClosing event handler
         }
 
@@ -214,128 +217,43 @@ namespace _Elsword__Title_Timer {
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            int keycode = -1;
-            keycode = (int)e.KeyCode;
+            int keycode = (int)e.KeyCode;
+            keycode = GetRealModifierKeyCode(e.KeyCode, keycode);
 
-            if (e.KeyCode == Keys.ShiftKey)
+            var binding = hotkeyBindings.FirstOrDefault(b => b.IsCapturing);
+            if (binding != null)
             {
-                if (Convert.ToBoolean(GetAsyncKeyState(Keys.LShiftKey)))
-                {
-                    keycode = (int)Keys.LShiftKey;
-                }
-                if (Convert.ToBoolean(GetAsyncKeyState(Keys.RShiftKey)))
-                {
-                    keycode = (int)Keys.RShiftKey;
-                }
+                binding.IsCapturing = false;
+                binding.SetKeycode(keycode);
+                binding.Button.Text = binding.ButtonDefaultText;
+                binding.Label.Text = binding.LabelPrefix + "[" + (Keys)keycode + "]";
             }
 
-            if (e.KeyCode == Keys.ControlKey)
-            {
-                if (Convert.ToBoolean(GetAsyncKeyState(Keys.LControlKey)))
-                {
-                    keycode = (int)Keys.LControlKey;
-                }
-                if (Convert.ToBoolean(GetAsyncKeyState(Keys.RControlKey)))
-                {
-                    keycode = (int)Keys.RControlKey;
-                }
-            }
-
-            if (e.KeyCode == Keys.Menu)
-            {
-                if (Convert.ToBoolean(GetAsyncKeyState(Keys.LMenu)))
-                {
-                    keycode = (int)Keys.LMenu;
-                }
-                if (Convert.ToBoolean(GetAsyncKeyState(Keys.RMenu)))
-                {
-                    keycode = (int)Keys.RMenu;
-                }
-            }
-
-            if (IsCapturing_Switching)
-            {
-                IsCapturing_Switching = false; // End key capture state
-                // When a key input is detected, change the button and label text
-                timerOverlay.form_custom_ChangeTitle = keycode;
-                btn_Switching.Text = "Title switching key\r\nregister button";
-                label_Switching.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-            }
-            else if (IsCapturing_NPWG)
-            {
-                IsCapturing_NPWG = false;
-                btn_NPWG.Text = "NPWG direction key\r\nregister button";
-                timerOverlay.form_custom_NPWG = keycode;
-                label_NPWG.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-            }
-            else if (IsCapturing_NPWG_Skill)
-            {
-                IsCapturing_NPWG_Skill = false;
-                btn_NPWG_Skill.Text = "NPWG skill key\r\nregister button";
-                timerOverlay.form_custom_NPWG_Skill = keycode;
-                label_NPWG_Skill.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-            }
-            else if (IsCapturing_FreedShadow)
-            {
-                IsCapturing_FreedShadow = false;
-                btn_FreedShadow.Text = "Freed Shadow direction key\r\nregister button";
-                timerOverlay.form_custom_FreedShadow = keycode;
-                label_FreedShadow.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-            }
-            else if (IsCapturing_Dusk)
-            {
-                IsCapturing_Dusk = false;
-                btn_Dusk.Text = "Dusk direction key\r\nregister button";
-                timerOverlay.form_custom_Dusk = keycode;
-                label_Dusk.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-            }
-            else if (IsCapturing_Natural)
-            {
-                IsCapturing_Natural = false;
-                btn_Natural.Text = "Natural Flow direction key\r\nregister button";
-                timerOverlay.form_custom_Natural = keycode;
-                label_Natural.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-            }
-            else if (IsCapturing_Awakening)
-            {
-                IsCapturing_Awakening = false;
-                btn_Awakening.Text = "Awakening key\r\nregister button";
-                timerOverlay.form_custom_Awakening = keycode;
-                label_Awakening.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-            }
-            else if (IsCapturing_Onion)
-            {
-                IsCapturing_Onion = false;
-                btn_Onion.Text = "Onion use key\r\nregister button";
-                timerOverlay.form_custom_Onion = keycode;
-                label_Onion.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-            }
-            else if (IsCapturing_Apple)
-            {
-                IsCapturing_Apple = false;
-                btn_Apple.Text = "Apple use key\r\nregister button";
-                timerOverlay.form_custom_Apple = keycode;
-                label_Apple.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-            }
-            else if (IsCapturing_FOD)
-            {
-                IsCapturing_FOD = false;
-                btn_FOD.Text = "Pseudo FOD key\r\nregister button";
-                timerOverlay.form_custom_FOD = keycode;
-                label_FOD.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-            }
-            else if (IsCapturing_TimerReset)
-            {
-                IsCapturing_TimerReset = false;
-                btn_TimerReset.Text = "Timer reset key\r\nregister button";
-                timerOverlay.form_custom_TimerReset = keycode;
-                label_TimerReset.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
-            }
-
-            // Unregister the event handler so that no more key input is processed
-            this.KeyDown -= Form1_KeyDown; // Unregister the event handler
-
+            this.KeyDown -= Form1_KeyDown;
             EnableOtherControls();
+        }
+
+        private void HotkeyButton_Click(object sender, EventArgs e)
+        {
+            var binding = hotkeyBindings.FirstOrDefault(b => b.Button == sender);
+            if (binding != null)
+            {
+                binding.IsCapturing = true;
+                binding.Button.Text = "Please enter a key";
+                DisableOtherControls();
+                this.KeyPreview = true;
+                this.KeyDown += Form1_KeyDown;
+            }
+        }
+
+        /// <summary>
+        /// Helper to set button text, label, and assign the key value for a hotkey.
+        /// </summary>
+        private void SetHotkeyAndLabel(Button button, Label label, string buttonText, Action<int> setValue, int keycode)
+        {
+            button.Text = buttonText + " key\r\nregister button";
+            setValue(keycode);
+            label.Text = REGISTERED_KEY_TEXT + "[" + (Keys)keycode + "]";
         }
 
         private void btn_Switching_Click(object sender, EventArgs e)
@@ -518,17 +436,17 @@ namespace _Elsword__Title_Timer {
         }
 
         private void check_FreedShadow_FOD_CheckedChanged(object sender, EventArgs e)
-        {   
+        {
             timerOverlay.form_Use_FreedShadow_FOD = check_FreedShadow_FOD.Checked;
         }
 
         private void check_Dusk_FOD_CheckedChanged(object sender, EventArgs e)
-        {   
+        {
             timerOverlay.form_Use_Dusk_FOD = check_Dusk_FOD.Checked;
         }
 
         private void check_ADD_User_CheckedChanged(object sender, EventArgs e)
-        {   
+        {
             timerOverlay.form_ADD_User = check_ADD_User.Checked;
         }
 
@@ -561,6 +479,39 @@ namespace _Elsword__Title_Timer {
             timerOverlay.isInitialized = false;
         }
 
+        /// <summary>
+        /// Returns the actual keycode for modifier keys (Shift, Control, Alt)
+        /// by checking whether the left or right key was pressed.
+        /// </summary>
+        /// <param name="keyCode">The KeyCode provided by the event.</param>
+        /// <param name="defaultCode">The default keycode if no specific modifier key is detected.</param>
+        /// <returns>The keycode of the detected modifier key or defaultCode.</returns>
+        private int GetRealModifierKeyCode(Keys keyCode, int defaultCode)
+        {
+            if (keyCode == Keys.ShiftKey)
+            {
+                if (Convert.ToBoolean(GetAsyncKeyState(Keys.LShiftKey)))
+                    return (int)Keys.LShiftKey;
+                if (Convert.ToBoolean(GetAsyncKeyState(Keys.RShiftKey)))
+                    return (int)Keys.RShiftKey;
+            }
+            if (keyCode == Keys.ControlKey)
+            {
+                if (Convert.ToBoolean(GetAsyncKeyState(Keys.LControlKey)))
+                    return (int)Keys.LControlKey;
+                if (Convert.ToBoolean(GetAsyncKeyState(Keys.RControlKey)))
+                    return (int)Keys.RControlKey;
+            }
+            if (keyCode == Keys.Menu)
+            {
+                if (Convert.ToBoolean(GetAsyncKeyState(Keys.LMenu)))
+                    return (int)Keys.LMenu;
+                if (Convert.ToBoolean(GetAsyncKeyState(Keys.RMenu)))
+                    return (int)Keys.RMenu;
+            }
+            return defaultCode;
+        }
+
         // Generalized handler for key capture buttons
         private void StartKeyCapture(ref bool captureFlag, Button button)
         {
@@ -571,7 +522,7 @@ namespace _Elsword__Title_Timer {
             this.KeyPreview = true; // Set the form to receive key events
             this.KeyDown += Form1_KeyDown; // Register the KeyDown event handler
         }
-        
+
         // Generalized KeyPress handler: only allow numbers and backspace
         private void OnlyAllowNumbersAndBackspace(object sender, KeyPressEventArgs e)
         {
@@ -580,5 +531,122 @@ namespace _Elsword__Title_Timer {
                 e.Handled = true;
             }
         }
-    }
+
+        private List<HotkeyBinding> createHotKeyBindings()
+        {
+            return new List<HotkeyBinding>
+            {
+                // Open Title change menu Key
+                new HotkeyBinding
+                {
+                    Button = btn_Switching,
+                    Label = label_Switching,
+                    IsCapturing = false,
+                    SetKeycode = v => timerOverlay.form_custom_ChangeTitle = v,
+                    ButtonDefaultText = "Title switching key\r\nregister button",
+                    LabelPrefix = REGISTERED_KEY_TEXT
+                },
+                // 15-5 Title Key
+                new HotkeyBinding
+                {
+                    Button = btn_NPWG,
+                    Label = label_NPWG,
+                    IsCapturing = false,
+                    SetKeycode = v => timerOverlay.form_custom_NPWG = v,
+                    ButtonDefaultText = "NPWG direction key\r\nregister button",
+                    LabelPrefix = REGISTERED_KEY_TEXT
+                },
+                // Skill to Reset key
+                new HotkeyBinding
+                {
+                    Button = btn_NPWG_Skill,
+                    Label = label_NPWG_Skill,
+                    IsCapturing = false,
+                    SetKeycode = v => timerOverlay.form_custom_NPWG_Skill = v,
+                    ButtonDefaultText = "NPWG skill key\r\nregister button",
+                    LabelPrefix = REGISTERED_KEY_TEXT
+                },
+                // 17-5 or 20-5 Title key
+                new HotkeyBinding
+                {
+                    Button = btn_FreedShadow,
+                    Label = label_FreedShadow,
+                    IsCapturing = false,
+                    SetKeycode = v => timerOverlay.form_custom_FreedShadow = v,
+                    ButtonDefaultText = "Freed Shadow direction key\r\nregister button",
+                    LabelPrefix = REGISTERED_KEY_TEXT
+                },
+                // Grotto Title key
+                new HotkeyBinding
+                {
+                    Button = btn_Dusk,
+                    Label = label_Dusk,
+                    IsCapturing = false,
+                    SetKeycode = v => timerOverlay.form_custom_Dusk = v,
+                    ButtonDefaultText = "Dusk direction key\r\nregister button",
+                    LabelPrefix = REGISTERED_KEY_TEXT
+                },
+                // DPS Title Key
+                new HotkeyBinding
+                {
+                    Button = btn_Natural,
+                    Label = label_Natural,
+                    IsCapturing = false,
+                    SetKeycode = v => timerOverlay.form_custom_Natural = v,
+                    ButtonDefaultText = "Natural Flow direction key\r\nregister button",
+                    LabelPrefix = REGISTERED_KEY_TEXT
+                },
+                // Awakening Key
+                new HotkeyBinding
+                {
+                    Button = btn_Awakening,
+                    Label = label_Awakening,
+                    IsCapturing = false,
+                    SetKeycode = v => timerOverlay.form_custom_Awakening = v,
+                    ButtonDefaultText = "Awakening key\r\nregister button",
+                    LabelPrefix = REGISTERED_KEY_TEXT
+                },
+                // Onion Key
+                new HotkeyBinding
+                {
+                    Button = btn_Onion,
+                    Label = label_Onion,
+                    IsCapturing = false,
+                    SetKeycode = v => timerOverlay.form_custom_Onion = v,
+                    ButtonDefaultText = "Onion use key\r\nregister button",
+                    LabelPrefix = REGISTERED_KEY_TEXT
+                },
+                // Apple Consumption Key
+                new HotkeyBinding
+                {
+                    Button = btn_Apple,
+                    Label = label_Apple,
+                    IsCapturing = false,
+                    SetKeycode = v => timerOverlay.form_custom_Apple = v,
+                    ButtonDefaultText = "Apple use key\r\nregister button",
+                    LabelPrefix = REGISTERED_KEY_TEXT
+                },
+                // Pseudo FOD Key
+                new HotkeyBinding
+                {
+                    Button = btn_FOD,
+                    Label = label_FOD,
+                    IsCapturing = false,
+                    SetKeycode = v => timerOverlay.form_custom_FOD = v,
+                    ButtonDefaultText = "Pseudo FOD key\r\nregister button",
+                    LabelPrefix = REGISTERED_KEY_TEXT
+                },
+                // Timer Reset Key
+                new HotkeyBinding
+                {
+                    Button = btn_TimerReset,
+                    LoadPreset = label_TimerReset,
+                    IsCapturing = false,
+                    SetKeycode = v => timerOverlay.form_custom_TimerReset = v,
+                    ButtonDefaultText = "Timer reset key\r\nregister button",
+                    LabelPrefix = REGISTERED_KEY_TEXT
+                },
+            };
+        }
+    }                                    
 }
