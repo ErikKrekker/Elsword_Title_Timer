@@ -349,11 +349,12 @@ namespace _Elsword__Title_Timer {
         }
 
         private void btn_NPWG_Skill_Click(object sender, EventArgs e)
-        {   
+        {
             StartKeyCapture(ref IsCapturing_NPWG_Skill, btn_NPWG_Skill);
         }
 
-        private void btn_FreedShadow_Click(object sender, EventArgs e) {
+        private void btn_FreedShadow_Click(object sender, EventArgs e)
+        {
             StartKeyCapture(ref IsCapturing_FreedShadow, btn_FreedShadow);
         }
 
@@ -498,132 +499,68 @@ namespace _Elsword__Title_Timer {
 
         private void check_NPWG_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_NPWG.Checked)
-            {
-                timerOverlay.Show_NPWG = true;
-            }
-            else
-            {
-                timerOverlay.Show_NPWG = false;
-            }
+            timerOverlay.Show_NPWG = check_NPWG.Checked;
         }
 
         private void check_FreedShadow_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_FreedShadow.Checked)
-            {
-                timerOverlay.Show_FreedShadow = true;
-            }
-            else
-            {
-                timerOverlay.Show_FreedShadow = false;
-            }
+            timerOverlay.Show_FreedShadow = check_FreedShadow.Checked;
         }
 
         private void check_Dusk_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_Dusk.Checked)
-            {
-                timerOverlay.Show_Dusk = true;
-            }
-            else
-            {
-                timerOverlay.Show_Dusk = false;
-            }
+            timerOverlay.Show_Dusk = check_Dusk.Checked;
         }
 
         private void check_NPWG_FOD_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_NPWG_FOD.Checked)
-            {
-                timerOverlay.form_Use_NPWG_FOD = true;
-            }
-            else
-            {
-                timerOverlay.form_Use_NPWG_FOD = false;
-            }
+            timerOverlay.form_Use_NPWG_FOD = check_NPWG_FOD.Checked;
         }
 
         private void check_FreedShadow_FOD_CheckedChanged(object sender, EventArgs e)
-        {
-            if (check_FreedShadow_FOD.Checked)
-            {
-                timerOverlay.form_Use_FreedShadow_FOD = true;
-            }
-            else
-            {
-                timerOverlay.form_Use_FreedShadow_FOD = false;
-            }
+        {   
+            timerOverlay.form_Use_FreedShadow_FOD = check_FreedShadow_FOD.Checked;
         }
 
         private void check_Dusk_FOD_CheckedChanged(object sender, EventArgs e)
-        {
-            if (check_Dusk_FOD.Checked)
-            {
-                timerOverlay.form_Use_Dusk_FOD = true;
-            }
-            else
-            {
-                timerOverlay.form_Use_Dusk_FOD = false;
-            }
+        {   
+            timerOverlay.form_Use_Dusk_FOD = check_Dusk_FOD.Checked;
         }
 
         private void check_ADD_User_CheckedChanged(object sender, EventArgs e)
+        {   
+            timerOverlay.form_ADD_User = check_ADD_User.Checked;
+        }
+
+        private void check_Resize_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_ADD_User.Checked)
-            {
-                timerOverlay.form_ADD_User = true;
-            }
-            else
-            {
-                timerOverlay.form_ADD_User = false;
-            }
+            timerOverlay.allowResize = check_Resize.Checked;
         }
 
         private void text_Fontsize_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Only allow numbers and backspace
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
-            {
-                e.Handled = true;
-            }
+            OnlyAllowNumbersAndBackspace(sender, e);
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Only allow numbers and backspace
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
-            {
-                e.Handled = true;
-            }
+            OnlyAllowNumbersAndBackspace(sender, e);
         }
 
         private void chang_Fontsize_Click(object sender, EventArgs e)
         {
             int fontSize_perCent = int.Parse(text_Fontsize.Text);
-            timerOverlay.fontScale = (fontSize_perCent / 100f);
+            timerOverlay.fontScale = fontSize_perCent / 100f;
             timerOverlay.isInitialized = false;
         }
 
         private void btn_Chg_Imgsize_Click(object sender, EventArgs e)
         {
             int imgSize_perCent = int.Parse(text_imgSize.Text);
-            timerOverlay.imgScale = (imgSize_perCent / 100f);
+            timerOverlay.imgScale = imgSize_perCent / 100f;
             timerOverlay.isInitialized = false;
         }
 
-        private void check_Resize_CheckedChanged(object sender, EventArgs e)
-        {
-            if (check_Resize.Checked)
-            {
-                timerOverlay.allowResize = true;
-            }
-            else
-            {
-                timerOverlay.allowResize = false;
-            }
-        }
-        
         // Generalized handler for key capture buttons
         private void StartKeyCapture(ref bool captureFlag, Button button)
         {
@@ -633,6 +570,15 @@ namespace _Elsword__Title_Timer {
             // Enable the form's KeyDown event to wait for key input
             this.KeyPreview = true; // Set the form to receive key events
             this.KeyDown += Form1_KeyDown; // Register the KeyDown event handler
+        }
+        
+        // Generalized KeyPress handler: only allow numbers and backspace
+        private void OnlyAllowNumbersAndBackspace(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
